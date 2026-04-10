@@ -70,13 +70,14 @@
                </font>
             </Label>
       
-            <Button text="Back" />
+            <Button layoutX="30.0" layoutY="26.0" text="Back" />
             <Label layoutX="85.0" layoutY="299.0" text="Client Print Name:" />
             <TextField layoutX="190.0" layoutY="295.0" prefHeight="25.0" prefWidth="238.0" />
             <Label layoutX="50.0" layoutY="345.0" text="Client Print Signature:" />
             <TextField layoutX="171.0" layoutY="341.0" />
             <TextField layoutX="396.0" layoutY="341.0" prefHeight="25.0" prefWidth="80.0" />
             <Label layoutX="361.0" layoutY="345.0" text="Date:" />
+            <Button layoutX="524.0" layoutY="26.0" mnemonicParsing="false" text="Next" />
          </children>
       </Pane>
    </VBox>
@@ -108,10 +109,12 @@
                <CheckBox layoutX="451.0" layoutY="201.0" mnemonicParsing="false" />
                <CheckBox layoutX="392.0" layoutY="254.0" mnemonicParsing="false" />
                <CheckBox layoutX="451.0" layoutY="254.0" mnemonicParsing="false" />
+               <Button layoutX="526.0" layoutY="14.0" mnemonicParsing="false" text="Submit" />
+               <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Back" />
             </children></Pane>
       </children>
    </VBox>
-   <VBox fx:id="feedbackPage" prefHeight="200.0" prefWidth="100.0">
+   <VBox fx:id="feedbackPage" prefHeight="440.0" prefWidth="600.0" visible="false">
       <children>
          <Pane prefHeight="428.0" prefWidth="616.0">
             <children>
@@ -178,6 +181,7 @@
                <Line endX="374.5" endY="-6.0" layoutX="181.0" layoutY="250.0" startX="-141.5" startY="-6.0" />
                <Line endX="374.5" endY="-6.0" layoutX="180.0" layoutY="323.0" startX="-141.5" startY="-6.0" />
                <Line endX="374.5" endY="-6.0" layoutX="180.0" layoutY="206.0" startX="-141.5" startY="-6.0" />
+               <Button layoutX="520.0" layoutY="13.0" mnemonicParsing="false" text="Check-out" textFill="#242524" />
             </children></Pane>
       </children>
    </VBox>
