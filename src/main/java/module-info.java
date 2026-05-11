@@ -3,7 +3,6 @@ module com.example.cosmoform {
     requires javafx.fxml;
 
     requires java.sql;
-
     requires javafx.graphics;
 
 

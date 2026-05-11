@@ -8,7 +8,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cosmoform.HelloController">
 
-   <VBox fx:id="homePage" alignment="CENTER" spacing="15" visible="false" >
+   <VBox fx:id="homePage" alignment="CENTER" spacing="15" visible="false">
       <Label fx:id="welcomeText" text="Welcome To Cosmetology">
          <font>
             <Font size="24.0" />
@@ -24,7 +24,7 @@
 
 
 
-   <VBox fx:id="servicesPage" alignment="CENTER" spacing="10" visible="false" >
+   <VBox fx:id="servicesPage" alignment="CENTER" spacing="10" visible="false">
       <Pane prefHeight="362.0" prefWidth="600.0">
          <children>
             <Label fx:id="schoolName" layoutX="11.0" layoutY="6.0" text="Worcester Technical High School" />
@@ -35,7 +35,7 @@
                <CheckBox text="Color" />
                <CheckBox text="Haircut / Style" />
                <CheckBox text="Nails" />
-               <CheckBox text="Waxing"  onAction="#goToWaxing"/>
+               <CheckBox onAction="#goToWaxing" text="Waxing" />
                <CheckBox text="Other Services" />
             </VBox>
             <Label layoutX="105.0" layoutY="90.0" text="What Are You Getting Done Today?">
@@ -45,7 +45,7 @@
             </Label>
          </children></Pane>
 
-               <Button text="Continue" onAction="#goHome"/>
+               <Button onAction="#goHome" text="Continue" />
    </VBox>
 
    <VBox fx:id="consentPage" alignment="CENTER" spacing="10" >
@@ -70,14 +70,14 @@
                </font>
             </Label>
       
-            <Button layoutX="30.0" layoutY="26.0" text="Back" onAction="#goHome" />
+            <Button layoutX="30.0" layoutY="26.0" onAction="#goHome" text="Back" />
             <Label layoutX="85.0" layoutY="299.0" text="Client Print Name:" />
             <TextField fx:id="clientName" layoutX="190.0" layoutY="295.0" prefHeight="25.0" prefWidth="238.0" />
             <Label layoutX="50.0" layoutY="345.0" text="Client Print Signature:" />
             <TextField fx:id="clientSignature" layoutX="171.0" layoutY="341.0" />
             <TextField fx:id="date" layoutX="396.0" layoutY="341.0" prefHeight="25.0" prefWidth="80.0" />
             <Label layoutX="361.0" layoutY="345.0" text="Date:" />
-            <Button layoutX="524.0" layoutY="26.0" onAction="#goToServices" mnemonicParsing="false" text="Next" />
+            <Button layoutX="524.0" layoutY="26.0" mnemonicParsing="false" onAction="#goToServices" text="Next" />
          </children>
       </Pane>
    </VBox>
@@ -109,11 +109,11 @@
                <CheckBox layoutX="451.0" layoutY="201.0" mnemonicParsing="false" />
                <CheckBox layoutX="392.0" layoutY="254.0" mnemonicParsing="false" />
                <CheckBox layoutX="451.0" layoutY="254.0" mnemonicParsing="false" />
-               <Button onAction="#goHome" layoutX="526.0" layoutY="14.0" mnemonicParsing="false" text="Submit" />
+               <Button layoutX="526.0" layoutY="14.0" mnemonicParsing="false" onAction="#goHome" text="Submit" />
             </children></Pane>
       </children>
    </VBox>
-   <VBox fx:id="feedbackPage" prefHeight="440.0" prefWidth="600.0" >
+   <VBox fx:id="feedbackPage" prefHeight="440.0" prefWidth="600.0" visible="false">
       <children>
          <Pane prefHeight="428.0" prefWidth="616.0">
             <children>
@@ -180,7 +180,7 @@
                <Line endX="374.5" endY="-6.0" layoutX="181.0" layoutY="250.0" startX="-141.5" startY="-6.0" />
                <Line endX="374.5" endY="-6.0" layoutX="180.0" layoutY="323.0" startX="-141.5" startY="-6.0" />
                <Line endX="374.5" endY="-6.0" layoutX="180.0" layoutY="206.0" startX="-141.5" startY="-6.0" />
-               <Button onAction="#goHome" layoutX="520.0" layoutY="13.0" mnemonicParsing="false" text="Check-out" textFill="#242524" />
+               <Button layoutX="520.0" layoutY="13.0" mnemonicParsing="false" onAction="#goHome" text="Check-out" textFill="#242524" />
             </children></Pane>
       </children>
    </VBox>
