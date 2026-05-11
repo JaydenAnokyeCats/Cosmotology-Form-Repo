@@ -9,7 +9,8 @@
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cosmoform.HelloController">
 
 
-
+///  This page asks what kind of services are you getting done
+/// Then you choose the box based on which service will be done
    <VBox fx:id="servicesPage" alignment="CENTER" spacing="10" style="-fx-background-color: pink;">
       <Pane prefHeight="362.0" prefWidth="600.0">
          <children>
@@ -21,6 +22,7 @@
                <CheckBox text="Color" wrapText="true" />
                <CheckBox text="Haircut / Style" wrapText="true"/>
                <CheckBox text="Nails" wrapText="true"/>
+               ///Waxing checkbox takes the client into the next page which is the waxing waiver page
                <CheckBox onAction="#goToWaxing" text="Waxing" wrapText="true"/>
                <CheckBox text="Other Services" wrapText="true"/>
             </VBox>
