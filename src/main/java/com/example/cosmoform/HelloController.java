@@ -7,12 +7,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import org.w3c.dom.Text;
 
 public class HelloController {
-
+    private JdbcDao jdbcDao = new JdbcDao();
 
 
     //   PAGES
@@ -45,6 +44,28 @@ public class HelloController {
     @FXML
     private Label validation;
 
+    @FXML
+    private TextField feedbackInput;
+
+    @FXML
+    public void submitFeedback() {
+        String name = clientName.getText();
+        String feedback = feedbackInput.getText();
+
+        if (name.isEmpty() || feedback.isEmpty()) {
+            validation.setText("Please fill out feedback form.");
+            return;
+        }
+
+        try {
+            jdbcDao.feedback(name, feedback);
+            validation.setText("Feedback submitted!");
+        } catch (Exception e) {
+            validation.setText("Error saving feedback.");
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     public void goToConsent() {
@@ -59,21 +80,33 @@ public class HelloController {
 
     @FXML
     public void goToServices(){
-        String text1 = clientSignature.getText();
-        String text2 = clientName.getText();
-        String text3 = date.getText();
-        String text4 = validation.getText();
+        String name = clientName.getText();
+        String signature = clientSignature.getText();
+        String dateValue = date.getText();
 
 
-        if(text1.isEmpty() && text2.isEmpty() && text3.isEmpty()){
+
+        if(name.isEmpty() || signature.isEmpty() || dateValue.isEmpty()){
             validation.setText("Please enter all necessary information.");
-        } else {
-            consentPage.setVisible(false);
-            consentPage.setManaged(false);
-            servicesPage.setVisible(true);
-            servicesPage.setManaged(true);
+            return;
+        }
 
-    }}
+        try {
+            jdbcDao.clientRecord(name, dateValue);
+        } catch (Exception e) {
+            validation.setText("Database error occurred.");
+            e.printStackTrace();
+            return;
+        }
+
+
+        consentPage.setVisible(false);
+        consentPage.setManaged(false);
+
+        servicesPage.setVisible(true);
+        servicesPage.setManaged(true);
+
+    }
 
     @FXML
     public void goToFeedback(){
@@ -83,12 +116,12 @@ public class HelloController {
         feedbackPage.setVisible(true);
         feedbackPage.setManaged(true);
     }
-    
+
     @FXML
     private void goToWaxing(){
         servicesPage.setVisible(false);
         servicesPage.setManaged(false);
-        
+
         waxingWaiver.setVisible(true);
         waxingWaiver.setManaged(true);
     }
@@ -137,4 +170,3 @@ public class HelloController {
         feedbackPage.setManaged(false);
     }
 }
-
