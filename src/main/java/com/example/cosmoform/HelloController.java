@@ -61,7 +61,9 @@ public class HelloController {
 
     @FXML
     private CheckBox otherBox;
-    private boolean waxingSelected = false;
+    @FXML
+    private TextField waxingComments;
+
     @FXML
     public void submitFeedback() {
         String name = clientName.getText();
@@ -157,6 +159,11 @@ public class HelloController {
             services.append("Other Services, ");
         }
 
+        if (services.length() == 0) {
+            validation.setText("Please select at least one service.");
+            return;
+        }
+
         try {
             jdbcDao.saveServices(name, services.toString());
             System.out.println("Saved services: " + services);
@@ -166,6 +173,12 @@ public class HelloController {
             validation.setText("Error saving services.");
             return;
 
+        }
+
+        if (waxingBox.isSelected()) {
+            goToWaxing();
+        } else {
+            goHome();
         }
         servicesPage.setVisible(false);
         servicesPage.setManaged(false);
@@ -185,6 +198,7 @@ public class HelloController {
 
     @FXML
     private void goToWaxing(){
+
         servicesPage.setVisible(false);
         servicesPage.setManaged(false);
 
@@ -194,9 +208,24 @@ public class HelloController {
 
 
     @FXML
-    private void handleWaxingSelection() {
+    private void submitWaxing() {
 
-        waxingSelected = waxingBox.isSelected();
+        String name = clientName.getText();
+
+        String answer = "";
+
+        String comments = waxingComments.getText();
+
+        try {
+            jdbcDao.waiverRecord(answer + " | " + comments, date.getText(), name);
+            System.out.println("Waxing saved for: " + name);
+        } catch (Exception e) {
+            validation.setText("Error saving waxing form.");
+            e.printStackTrace();
+            return;
+        }
+
+        goHome();
     }
 
 
@@ -204,6 +233,15 @@ public class HelloController {
     public void goHome() {
         // Hide consent page
         //and show it
+
+        if (waxingBox != null) waxingBox.setSelected(false);
+        if (permBox != null) permBox.setSelected(false);
+        if (colorBox != null) colorBox.setSelected(false);
+        if (haircutBox != null) haircutBox.setSelected(false);
+        if (nailsBox != null) nailsBox.setSelected(false);
+        if (otherBox != null) otherBox.setSelected(false);
+
+
         consentPage.setVisible(false);
         consentPage.setManaged(false);
 

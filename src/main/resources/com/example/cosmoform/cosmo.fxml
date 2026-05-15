@@ -58,7 +58,7 @@
                      <Font size="20.0" />
                   </font>
                </CheckBox>
-                    <CheckBox fx:id="waxingBox" onAction="#handleWaxingSelection" prefHeight="56.0" prefWidth="155.0" text="Waxing" VBox.vgrow="ALWAYS">
+                    <CheckBox fx:id="waxingBox" prefHeight="56.0" prefWidth="155.0" text="Waxing" VBox.vgrow="ALWAYS">
                   <font>
                      <Font size="20.0" />
                   </font>
@@ -86,7 +86,7 @@
                </CheckBox>
 
                                   </VBox>
-            <Button onAction="#goToWaxingPage" layoutX="759.0" layoutY="482.0" mnemonicParsing="false" prefHeight="112.0" prefWidth="409.0" text="Waxing Waiver Form" />
+            <Button onAction="#goToWaxing" layoutX="759.0" layoutY="482.0" mnemonicParsing="false" prefHeight="112.0" prefWidth="409.0" text="Waxing Waiver Form" />
 
             </children>
 
@@ -152,8 +152,8 @@
                   </font>
                </Label>
                <Label layoutX="38.0" layoutY="529.0" prefHeight="51.0" prefWidth="262.0" text="Additional Comments:" VBox.vgrow="ALWAYS" />
-               <TextField layoutX="38.0" layoutY="576.0" prefHeight="137.0" prefWidth="647.0" VBox.vgrow="ALWAYS" />
-               <Button layoutX="734.0" layoutY="609.0" mnemonicParsing="false" onAction="#goHome" prefHeight="93.0" prefWidth="358.0" text="Submit" VBox.vgrow="ALWAYS" />
+               <TextField fx:id="waxingComments" layoutX="38.0" layoutY="576.0" prefHeight="137.0" prefWidth="647.0" VBox.vgrow="ALWAYS" />
+               <Button layoutX="734.0" layoutY="609.0" mnemonicParsing="false" onAction="#submitWaxing" prefHeight="93.0" prefWidth="358.0" text="Submit" VBox.vgrow="ALWAYS" />
                <GridPane layoutX="38.0" layoutY="73.0" prefHeight="473.0" prefWidth="1860.0">
                  <columnConstraints>
                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1561.0" minWidth="10.0" prefWidth="1548.0" />
