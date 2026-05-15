@@ -16,6 +16,7 @@ public class HelloApplication extends Application {
         Scene mainScene = new Scene(fxmlLoader.load());
 
         stage.setTitle("Cosmotology");
+        stage.setFullScreen(true);
         stage.setScene(mainScene);
         stage.show();
     }
