@@ -16,6 +16,7 @@ public class JdbcDao {
             "Feedback_Answer) VALUES (?,?)";
     private static final String INSERT_Waiver = "INSERT INTO Waxing_Waiver (Answer, Date_Now," +
             " FirstName_LastName) VALUES (?,?,?)";
+    private static final String INSERT_SERVICES = "INSERT INTO SERVICES_SELECTED (FirstName_LastName," + "Services) VALUES (?,?)";
 
 
     public void clientRecord(String Name,String dateOfSignature) throws SQLException {
@@ -48,6 +49,22 @@ public class JdbcDao {
 
 
 
+        }
+    }
+
+
+    public void saveServices(String name, String services) throws SQLException {
+
+        try (Connection connection = DriverManager.getConnection(
+                DATABASE_URL, DATABASE_USER, DATABASE_PASS);
+
+             PreparedStatement preparedStatement =
+                     connection.prepareStatement(INSERT_SERVICES)) {
+
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, services);
+
+            preparedStatement.executeUpdate();
         }
     }
 
