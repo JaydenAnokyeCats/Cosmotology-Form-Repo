@@ -1,10 +1,7 @@
 package com.example.cosmoform;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -47,6 +44,24 @@ public class HelloController {
     @FXML
     private TextField feedbackInput;
 
+    @FXML
+    private CheckBox permBox;
+
+    @FXML
+    private CheckBox colorBox;
+
+    @FXML
+    private CheckBox haircutBox;
+
+    @FXML
+    private CheckBox nailsBox;
+
+    @FXML
+    private CheckBox waxingBox;
+
+    @FXML
+    private CheckBox otherBox;
+    private boolean waxingSelected = false;
     @FXML
     public void submitFeedback() {
         String name = clientName.getText();
@@ -91,14 +106,16 @@ public class HelloController {
             return;
         }
 
+
+
         try {
             jdbcDao.clientRecord(name, dateValue);
+            System.out.println("Client saved: " + name);
         } catch (Exception e) {
             validation.setText("Database error occurred.");
             e.printStackTrace();
             return;
         }
-
 
         consentPage.setVisible(false);
         consentPage.setManaged(false);
@@ -106,6 +123,55 @@ public class HelloController {
         servicesPage.setVisible(true);
         servicesPage.setManaged(true);
 
+
+    }
+
+
+    @FXML
+    public void submitServices(){
+        String name = clientName.getText();
+
+        StringBuilder services = new StringBuilder();
+
+        if (permBox.isSelected()) {
+            services.append("Perm, ");
+        }
+
+        if (colorBox.isSelected()) {
+            services.append("Color, ");
+        }
+
+        if (haircutBox.isSelected()) {
+            services.append("Haircut / Style, ");
+        }
+
+        if (nailsBox.isSelected()) {
+            services.append("Nails, ");
+        }
+
+        if (waxingBox.isSelected()) {
+            services.append("Waxing, ");
+        }
+
+        if (otherBox.isSelected()) {
+            services.append("Other Services, ");
+        }
+
+        try {
+            jdbcDao.saveServices(name, services.toString());
+            System.out.println("Saved services: " + services);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            validation.setText("Error saving services.");
+            return;
+
+        }
+        servicesPage.setVisible(false);
+        servicesPage.setManaged(false);
+
+        homePage.setVisible(true);
+        homePage.setManaged(true);
     }
 
     @FXML
@@ -124,6 +190,13 @@ public class HelloController {
 
         waxingWaiver.setVisible(true);
         waxingWaiver.setManaged(true);
+    }
+
+
+    @FXML
+    private void handleWaxingSelection() {
+
+        waxingSelected = waxingBox.isSelected();
     }
 
 
