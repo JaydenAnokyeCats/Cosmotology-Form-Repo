@@ -61,7 +61,7 @@ public class HelloController {
 
     @FXML
     private CheckBox otherBox;
-
+    private boolean waxingSelected = false;
     @FXML
     public void submitFeedback() {
         String name = clientName.getText();
@@ -167,11 +167,11 @@ public class HelloController {
             return;
 
         }
-        consentPage.setVisible(false);
-        consentPage.setManaged(false);
+        servicesPage.setVisible(false);
+        servicesPage.setManaged(false);
 
-        servicesPage.setVisible(true);
-        servicesPage.setManaged(true);
+        homePage.setVisible(true);
+        homePage.setManaged(true);
     }
 
     @FXML
@@ -190,6 +190,13 @@ public class HelloController {
 
         waxingWaiver.setVisible(true);
         waxingWaiver.setManaged(true);
+    }
+
+
+    @FXML
+    private void handleWaxingSelection() {
+
+        waxingSelected = waxingBox.isSelected();
     }
 
 
